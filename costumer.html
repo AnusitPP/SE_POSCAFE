@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เมนูร้านอาหาร</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .menu-item h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        .menu-item p {
+            color: #666;
+            margin: 5px 0;
+        }
+        .menu-item .price {
+            font-size: 20px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .menu-item .out-of-stock {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>เมนูอาหาร</h1>
+
+<div class="menu-container" id="menu-container">
+    <!-- รายการเมนูจะถูกเพิ่มโดย JavaScript -->
+</div>
+
+<script>
+    const menuItems = [
+        {
+            id: 1,
+            name: "Pad Thai",
+            description: "Stir-fried noodles with shrimp",
+            price: 100,
+            image: "/images/padthai.jpg",
+            availability: true
+        },
+        {
+            id: 2,
+            name: "Som Tum",
+            description: "Papaya salad",
+            price: 60,
+            image: "/images/somtum.jpg",
+            availability: false
+        }
+    ];
+
+    const menuContainer = document.getElementById("menu-container");
+
+    function renderMenu() {
+        menuItems.forEach(item => {
+            const menuItemDiv = document.createElement("div");
+            menuItemDiv.classList.add("menu-item");
+
+            const image = document.createElement("img");
+            image.src = item.image;
+
+            const name = document.createElement("h2");
+            name.textContent = item.name;
+
+            const description = document.createElement("p");
+            description.textContent = item.description;
+
+            const price = document.createElement("p");
+            price.classList.add("price");
+            price.textContent = `${item.price} บาท`;
+
+            menuItemDiv.appendChild(image);
+            menuItemDiv.appendChild(name);
+            menuItemDiv.appendChild(description);
+
+            if (!item.availability) {
+                const outOfStock = document.createElement("p");
+                outOfStock.classList.add("out-of-stock");
+                outOfStock.textContent = "สินค้าหมด";
+                menuItemDiv.appendChild(outOfStock);
+            } else {
+                menuItemDiv.appendChild(price);
+            }
+
+            menuContainer.appendChild(menuItemDiv);
+        });
+    }
+
+    renderMenu();
+</script>
+
+</body>
+</html>

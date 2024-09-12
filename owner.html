@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>จัดการร้านอาหาร</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+
+<h1>จัดการเมนูและบิล</h1>
+
+<div class="form-container">
+    <h2>เพิ่ม/แก้ไขเมนู</h2>
+    <div class="form-group">
+        <label for="menu-name">ชื่อเมนู:</label>
+        <input type="text" id="menu-name" placeholder="กรอกชื่อเมนู">
+    </div>
+    <div class="form-group">
+        <label for="menu-description">รายละเอียดเมนู:</label>
+        <textarea id="menu-description" placeholder="กรอกรายละเอียดเมนู"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="menu-price">ราคา:</label>
+        <input type="number" id="menu-price" placeholder="กรอกราคา">
+    </div>
+    <div class="form-group">
+        <label for="menu-status">สถานะ:</label>
+        <select id="menu-status">
+            <option value="available">มีสินค้า</option>
+            <option value="unavailable">สินค้าหมด</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <button id="save-menu">บันทึกเมนู</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById("save-menu").addEventListener("click", function() {
+        const name = document.getElementById("menu-name").value;
+        const description = document.getElementById("menu-description").value;
+        const price = document.getElementById("menu-price").value;
+        const status = document.getElementById("menu-status").value;
+
+        if (name && description && price) {
+            alert(`บันทึกเมนูสำเร็จ!\nชื่อ: ${name}\nรายละเอียด: ${description}\nราคา: ${price} บาท\nสถานะ: ${status}`);
+        } else {
+            alert("กรุณากรอกข้อมูลให้ครบถ้วน");
+        }
+    });
+</script>
+
+</body>
+</html>
